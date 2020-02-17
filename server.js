@@ -6,7 +6,7 @@ const app = express();
  
 // Serve only the static files form the dist directory
 // Replace the '/dist/Bootcamp-DiMo-Frontend'
-app.use(express.static(__dirname + '/dist/'));
+app.use(express.static(__dirname + '/dist/Bootcamp-DiMo-Frontend'));
  
 app.get('*', function(req,res) {
   // Replace the '/dist/<to_your_project_name>/index.html'
