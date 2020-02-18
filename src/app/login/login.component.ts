@@ -42,8 +42,8 @@ export class LoginComponent implements OnInit {
     };
 
     this.httpService
-      .Post<LoginResponse, any>('/api/login', {
-        email: this.formControlValue('email'),
+      .Post<LoginResponse, any>('/api/profile/login', {
+        emailId: this.formControlValue('email'),
         password: this.formControlValue('password')
       })
       .subscribe(
