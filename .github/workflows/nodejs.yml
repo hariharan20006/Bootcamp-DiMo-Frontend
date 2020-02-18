@@ -4,9 +4,7 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     strategy:
       matrix:
         node-version: [10.x, 12.x]
@@ -23,16 +21,15 @@ jobs:
           npm ci
           npm run test-ci
           npm run build --if-present  
-  
-      - name: inform
-      - uses: 8398a7/action-slack@v2
-        with:
-          status: ${{ job.status }}
-          author_name: Integration Test # default: 8398a7@action-slack
-          channel: '#ci-status'
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # required
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
-        if: failure()
+      # - name: inform
+      # - uses: 8398a7/action-slack@v2
+      #   with:
+      #     status: ${{ job.status }}
+      #     author_name: Integration Test # default: 8398a7@action-slack
+      #     channel: '#ci-status'
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # required
+      #     SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
+      #   if: failure()
 
     
