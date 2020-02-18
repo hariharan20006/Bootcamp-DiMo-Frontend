@@ -24,15 +24,20 @@ jobs:
         npm run test-ci
         npm run build --if-present
 
-    - uses: 8398a7/action-slack@v2
-      with:
-        status: ${{ job.status }}
-        author_name: Integration Test # default: 8398a7@action-slack
-        channel: '#ci-status'
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # required
-        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
-      # if: always() # Pick up events even if the job fails or is canceled.
-      # if: failure() # Pick up events even if the job fails or is canceled.
+
+  notify:
+    runs-on: ubuntu-latest
+    steps:  
+      - uses: 8398a7/action-slack@v2
+        with:
+          status: ${{ job.status }}
+          author_name: Integration Test # default: 8398a7@action-slack
+          channel: '#ci-status'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # required
+          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
+        # if: always() # Pick up events even if the job fails or is canceled.
+    
+        if: failure() # Pick up events even if the job fails or is canceled.
 
       
