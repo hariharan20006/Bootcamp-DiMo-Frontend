@@ -1,5 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpParams,
+  HttpErrorResponse
+} from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 
 import { catchError, retry } from 'rxjs/operators';
@@ -19,7 +23,6 @@ export class HttpService {
   }
 
   handleError(error: HttpErrorResponse) {
-    
     let errorMessage = 'Unknown error!';
     if (error.error instanceof ErrorEvent) {
       // Client-side errors
@@ -28,8 +31,7 @@ export class HttpService {
       // Server-side errors
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
-    // TODO: change it
-    window.alert(errorMessage);
+
     return throwError(errorMessage);
   }
 
@@ -52,8 +54,8 @@ export class HttpService {
     data: Payload
   ): Observable<Response> {
     return this.httpClient
-      .post<Response>(this.getUrl(path), data)
-      .pipe(retry(3), catchError(this.handleError));
+      .post<Response>(this.REST_API_SERVER + path, data)
+      .pipe(retry(1), catchError(this.handleError));
   }
 
   /**
