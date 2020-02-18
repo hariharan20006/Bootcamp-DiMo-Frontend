@@ -8,13 +8,14 @@ import { AuthService } from '../services/auth.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { HttpClient } from '@angular/common/http';
 import { userDetails } from '../interfaces';
+import { RouterTestingModule } from '@angular/router/testing';
 
 class MockAuthService {
   public createAccount(userDetails: userDetails) {}
 }
 
 
-fdescribe('SignupComponent', () => {
+describe('SignupComponent', () => {
   let component: SignupComponent;
   let fixture: ComponentFixture<SignupComponent>;
   let firstName: AbstractControl;
@@ -28,7 +29,7 @@ fdescribe('SignupComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ SignupComponent ],
-      imports: [FormsModule, ReactiveFormsModule],
+      imports: [FormsModule, ReactiveFormsModule, RouterTestingModule],
       providers: [{provide: AuthService, useClass: MockAuthService}, HttpClientTestingModule, HttpClient]
     })
     .compileComponents();
@@ -97,7 +98,7 @@ fdescribe('SignupComponent', () => {
     const mockUserDetails: userDetails = {
       firstName: 'rtty',
       lastName: 'yui',
-      email: 'rt@gmail.com',
+      emailId: 'rt@gmail.com',
       password: 'e1@rUrt78yyh'
     }
     firstName.setValue('rtty');
