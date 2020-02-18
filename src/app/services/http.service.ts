@@ -9,12 +9,17 @@ import { catchError, retry } from 'rxjs/operators';
 })
 export class HttpService {
   // TODO: load from env
-  private REST_API_SERVER = 'https://dimo-services.herokuapp.com';
+  private REST_API_SERVER = 'https://dimo-wildwolves.herokuapp.com';
   // private REST_API_SERVER = "http://localhost:3000";
 
   constructor(private httpClient: HttpClient) {}
 
+  getUrl(path: string): string {
+    return this.REST_API_SERVER + path;
+  }
+
   handleError(error: HttpErrorResponse) {
+    
     let errorMessage = 'Unknown error!';
     if (error.error instanceof ErrorEvent) {
       // Client-side errors
@@ -33,7 +38,7 @@ export class HttpService {
    */
   public Get<Response>(path: string, params: HttpParams): Observable<Response> {
     return this.httpClient
-      .get<Response>(this.REST_API_SERVER + path, {
+      .get<Response>(this.getUrl(path), {
         params
       })
       .pipe(retry(3), catchError(this.handleError));
@@ -47,7 +52,7 @@ export class HttpService {
     data: Payload
   ): Observable<Response> {
     return this.httpClient
-      .post<Response>(this.REST_API_SERVER + path, data)
+      .post<Response>(this.getUrl(path), data)
       .pipe(retry(3), catchError(this.handleError));
   }
 
