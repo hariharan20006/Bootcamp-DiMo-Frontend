@@ -31,6 +31,6 @@ jobs:
       env:
         CI: true
     - run: |
-        npm run test build:ci
+        npm run build:ci
         echo "Build successfull"
         echo ""
