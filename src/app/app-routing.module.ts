@@ -7,6 +7,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthComponent } from './authentication/auth/auth.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { ViewProfileComponent } from './view-profile/view-profile.component';
 
 
 
@@ -39,7 +40,14 @@ const routes: Routes = [
     component: AppComponent,
     canActivate: [AuthGuardService],
     pathMatch: 'full'
+  },
+  {
+    path: 'view-profile',
+    component: ViewProfileComponent,
+    // canActivate: [AuthGuardService],
+    pathMatch: 'full'
   }
+
 
 ];
 
