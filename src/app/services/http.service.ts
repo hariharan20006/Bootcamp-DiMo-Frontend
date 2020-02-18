@@ -19,6 +19,7 @@ export class HttpService {
   }
 
   handleError(error: HttpErrorResponse) {
+    
     let errorMessage = 'Unknown error!';
     if (error.error instanceof ErrorEvent) {
       // Client-side errors
