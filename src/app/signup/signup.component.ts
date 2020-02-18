@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { userDetails } from '../interfaces';
+import {Router} from "@angular/router"
 
 @Component({
   selector: 'app-signup',
@@ -9,9 +10,12 @@ import { userDetails } from '../interfaces';
   styleUrls: ['./signup.component.css']
 })
 export class SignupComponent implements OnInit {
+  error: boolean;
 
   signupForm: FormGroup
-  constructor(private authService: AuthService) { 
+  constructor(private authService: AuthService,
+    private router: Router) { 
+    this.error = undefined;
     this.signupForm = new FormGroup({
       firstName: new FormControl('', [
         Validators.minLength(3)
@@ -52,10 +56,22 @@ export class SignupComponent implements OnInit {
     let details: userDetails = {
       firstName: this.firstName.value,
       lastName: this.lastName.value,
-      email: this.email.value,
+      emailId: this.email.value,
       password: this.password.value
     }
-    this.authService.createAccount(details);
+    this.authService.createAccount(details).subscribe(response => {
+      this.error = false;
+      setTimeout(()=> {
+        this.error = undefined;
+        this.router.navigate(['/login']);
+      }, 3000);
+    },
+    error => {
+      this.error = true;
+      setTimeout(()=> {
+        this.error = undefined
+      }, 2000);
+    });
   }
 
 }
