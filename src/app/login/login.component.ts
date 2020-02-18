@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
+  error: boolean;
   constructor(private httpService: HttpService, private router: Router) {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -48,10 +49,12 @@ export class LoginComponent implements OnInit {
       })
       .subscribe(
         token => {
+          this.error = false;
           browserStorage.save('token', token);
           this.router.navigate(['/dashboard']);
         },
         err => {
+          this.error = true;
           // TODO: Show Erro Message to user
           console.error('Observer got an error: ' + err);
         },

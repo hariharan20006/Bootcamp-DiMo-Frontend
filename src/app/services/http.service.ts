@@ -31,8 +31,7 @@ export class HttpService {
       // Server-side errors
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
-    // TODO: change it
-    window.alert(errorMessage);
+
     return throwError(errorMessage);
   }
 
