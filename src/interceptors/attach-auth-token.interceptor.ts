@@ -9,13 +9,17 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class AttachAuthTokenInterceptor implements HttpInterceptor {
-
   constructor() {}
 
-  intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-
+  intercept(
+    request: HttpRequest<unknown>,
+    next: HttpHandler
+  ): Observable<HttpEvent<unknown>> {
     const storageUser = localStorage.getItem('LoggedUser');
     const loggedUser = storageUser ? JSON.parse(storageUser) : null;
+    // request = request.clone({
+    //   headers: request.headers.set('Access-Control-Allow-Origin', '*')
+    // });
 
     if (loggedUser) {
       request = request.clone({
