@@ -17,6 +17,7 @@ import { HttpService } from './services/http.service';
 import { BrowserStorage } from './services/browserStorage.service';
 import { MovieSectionComponent } from './movie-section/movie-section.component';
 import { MovieComponentComponent } from './movie-component/movie-component.component';
+import { LogoComponent } from './logo/logo.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { MovieComponentComponent } from './movie-component/movie-component.compo
     DashboardComponent,
     PageNotFoundComponent,
     MovieSectionComponent,
-    MovieComponentComponent
+    MovieComponentComponent,
+    LogoComponent
     // LoginFormComponent
   ],
   imports: [
