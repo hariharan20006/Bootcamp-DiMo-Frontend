@@ -7,18 +7,16 @@ import { AuthService } from './auth.service';
 })
 export class AuthGuardService implements CanActivate {
   isValidUser: boolean;
-  
-  constructor(
-    private authService: AuthService,
-    private router: Router
-  ) { 
+
+  constructor(private authService: AuthService, private router: Router) {
     this.authService.validUser.subscribe(isValid => {
       this.isValidUser = isValid;
     });
+    this.isValidUser = authService.isUserLoggedIn();
   }
 
   canActivate() {
-    if (this.isValidUser) {
+    if (this.authService.isUserLoggedIn()) {
       this.router.navigate(['dashboard']);
     } else {
       this.router.navigate(['login']);
