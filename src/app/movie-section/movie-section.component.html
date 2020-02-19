@@ -1,11 +1,15 @@
 <div>
-  <p class="text-lg my-5 text-2xl">{{ sectionTitle }}</p>
-  <div class="flex">
-    <div *ngFor="let movie of sectionDetails">
-      <app-movie-component
-        [movieDetails]="movie"
-        class="mr-6"
-      ></app-movie-component>
+  <ng-container *ngIf="sectionDetails">
+    <p class="text-lg my-5 text-2xl text-gray-300">{{ sectionTitle }}</p>
+    <div class="flex">
+      <div *ngFor="let movie of sectionDetails">
+        <p>
+          <app-movie-component
+            [movieDetails]="movie"
+            class=""
+          ></app-movie-component>
+        </p>
+      </div>
     </div>
-  </div>
+  </ng-container>
 </div>

@@ -38,7 +38,10 @@ export class HttpService {
   /**
    * Get
    */
-  public Get<Response>(path: string, params: HttpParams): Observable<Response> {
+  public Get<Response>(
+    path: string,
+    params?: HttpParams
+  ): Observable<Response> {
     return this.httpClient
       .get<Response>(this.getUrl(path), {
         params
