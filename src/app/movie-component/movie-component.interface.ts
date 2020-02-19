@@ -6,12 +6,12 @@ export interface Imovie {
   id: any;
   keywords: String;
   original_language: String;
-  original_title: String;
+  originalTitle: String;
   overview: String;
   popularity: any;
   production_companies: String;
   production_countries: String;
-  release_date: String;
+  releaseDate: String;
   revenue: any;
   runtime: any;
   spoken_languages: String;
@@ -20,4 +20,5 @@ export interface Imovie {
   title: String;
   vote_average: String;
   vote_count: String;
+  posterUrl: String;
 }

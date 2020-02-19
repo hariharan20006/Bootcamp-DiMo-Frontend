@@ -1,16 +1,20 @@
-<div class="max-w-sm rounded overflow-hidden shadow-lg mr-4">
+<div
+  class="max-w-xs rounded overflow-hidden shadow-lg mr-12  border-r border-b border-l border-gray-800 bg-card"
+>
   <img
     class="w-full h-64"
-    src="../../assets/card-top.jpg"
-    alt="Sunset in the mountains"
+    [src]="movieDetails.posterUrl"
+    [alt]="movieDetails.originalTitle"
   />
   <div class="px-6 py-4">
-    <div class="font-bold text-xl mb-2">{{ movieDetails.original_title }}</div>
+    <div class="font-bold text-xl mb-2 text-gray-300 truncate">
+      {{ movieDetails.originalTitle }}
+    </div>
   </div>
   <div class="px-6 py-4">
     <span
       class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2"
-      >{{ movieDetails.release_date.substring(0, 4) }}</span
+      >{{ movieDetails.releaseDate.substring(0, 4) }}</span
     >
   </div>
 </div>

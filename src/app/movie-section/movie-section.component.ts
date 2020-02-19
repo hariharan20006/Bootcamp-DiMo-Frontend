@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Imovie } from '../movie-component/movie-component.interface';
+import { HttpParams } from '@angular/common/http';
+import { HttpService } from '../services/http.service';
 
 @Component({
   selector: 'app-movie-section',
@@ -9,9 +11,19 @@ import { Imovie } from '../movie-component/movie-component.interface';
 export class MovieSectionComponent implements OnInit {
   @Input() sectionDetails: [Imovie];
   @Input() sectionTitle;
-  constructor() {}
+  constructor(private httpService: HttpService) {}
 
   ngOnInit(): void {
-    console.log(this.sectionDetails);
+    this.getMoviesForSection(this.sectionTitle);
+  }
+
+  async getMoviesForSection(sectionTitle: String) {
+    let params = new HttpParams();
+    await this.httpService
+      .Get<[Imovie]>(`/api/movies/?genres.name=${sectionTitle}&pageSize=5`)
+      .subscribe(data => {
+        console.log(data);
+        this.sectionDetails = data;
+      });
   }
 }
