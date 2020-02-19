@@ -1,0 +1,29 @@
+.ww-signup__block {
+  width: 33.3333%;
+}
+
+.ww-signup__button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login-link {
+  margin-left: 10rem;
+}
+
+@media(max-width: 420px) {
+  .ww-signup__block {
+    width: 75%;
+  }
+  .ww-signup__button {
+    display: block;
+    text-align: center;
+    
+  }
+
+  .login-link {
+    margin-top: 1rem;
+    margin-left: 0;
+  }
+}

@@ -1,6 +1,6 @@
 <div class="flex justify-center items-center h-screen slide-background">
   <div
-    class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col w-4/12"
+    class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col ww-signup__block"
   >
   <app-logo></app-logo>
     <div
@@ -26,7 +26,7 @@
           placeholder="First Name"
         />
         <div
-          *ngIf="firstName.invalid && firstName.dirty && firstName.touched"
+          *ngIf="firstName.invalid && firstName.dirty"
           class="text-error bg-grey-400"
           id="firstNamewarning"
         >
@@ -48,7 +48,7 @@
           placeholder="Last Name"
         />
         <div
-          *ngIf="lastName.invalid && lastName.dirty && lastName.touched"
+          *ngIf="lastName.invalid && lastName.dirty"
           class="text-error bg-grey-400"
           id="lastNamewarning"
         >
@@ -67,7 +67,7 @@
           placeholder="example@gmail.com"
         />
         <div
-          *ngIf="email.invalid && email.dirty && email.touched"
+          *ngIf="email.invalid && email.dirty"
           class="text-error bg-grey-400"
         >
           {{ INVALID_EMAIL }}
@@ -88,20 +88,25 @@
           placeholder="******************"
         />
         <div
-          *ngIf="password.invalid && password.dirty && password.touched"
+          *ngIf="password.invalid && password.dirty"
           class="text-error bg-grey-400"
         >
           {{ INVALID_PASSWORD }}
         </div>
       </div>
-      <div class="flex items-center justify-between">
+      <div class="ww-signup__button">
         <button
-          class="bg-red-700 w-40 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          class="bg-red-700 w-40 hover:bg-red-500 text-white font-bold py-2 px-4 rounded"
           type="submit"
+          [disabled]="!signupForm.valid"
+          [ngClass]="{
+            'opacity-50': !signupForm.valid,
+            'cursor-not-allowed': !signupForm.valid
+          }"
         >
           Sign Up
         </button>
-        <div>
+        <div class="login-link">
           <span class="text-sm text-gray-500 mr-2"> Already a user?</span>
           <a
             class="inline-block align-baseline font-bold text-blue-900 hover:text-blue-700"
@@ -114,3 +119,8 @@
     </form>
   </div>
 </div>
+
+<!-- <button [disabled]="!signupForm.valid" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit" [ngClass]="{
+        'opacity-50': !signupForm.valid,
+        'cursor-not-allowed': !signupForm.valid
+      }"> -->
