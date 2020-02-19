@@ -7,7 +7,18 @@ import { routeMapping } from '../static-data';
   styleUrls: ['./navigation.component.css']
 })
 export class NavigationComponent implements OnInit {
+  public menuOpen: Boolean = false;
   constructor() {}
 
   ngOnInit(): void {}
+  
+  toggleMenu(){
+    this.menuOpen = !this.menuOpen
+  }
+
+  logout(){
+    //Todo: remove token from browser storage
+  }
+
+
 }
