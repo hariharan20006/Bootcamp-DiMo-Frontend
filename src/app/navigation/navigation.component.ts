@@ -6,12 +6,8 @@ import { routeMapping } from '../static-data';
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.css']
 })
-
 export class NavigationComponent implements OnInit {
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-
-  }
-
+  ngOnInit(): void {}
 }

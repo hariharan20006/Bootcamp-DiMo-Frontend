@@ -1,31 +1,45 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
 import {
   ReactiveFormsModule,
   FormsModule,
   AbstractControl
 } from '@angular/forms';
-import { By } from '@angular/platform-browser';
+import { strict } from 'assert';
+import { AuthService } from '../services/auth.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpClient } from '@angular/common/http';
+import { userDetails } from '../interfaces';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { LoginComponent } from './login.component';
 
-fdescribe('LoginComponent', () => {
+class MockAuthService {
+  public createAccount(userDetails: userDetails) {}
+}
+
+describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
   let email: AbstractControl;
   let password: AbstractControl;
   let loginUpButton: HTMLButtonElement;
+  let creatAccountSpy: jasmine.Spy;
+  let authService: AuthService;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [LoginComponent]
+      declarations: [LoginComponent],
+      imports: [FormsModule, ReactiveFormsModule, RouterTestingModule, HttpClientTestingModule],
+      providers: [
+        { provide: AuthService, useClass: MockAuthService }
+      ]
     }).compileComponents();
-  }));
 
-  // beforeEach(() => {
-  //   fixture = TestBed.createComponent(LoginComponent);
-  //   component = fixture.componentInstance;
-  //   fixture.detectChanges();
-  // });
+    authService = TestBed.get(AuthService);
+
+    creatAccountSpy = spyOn(authService, 'createAccount');
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(LoginComponent);
