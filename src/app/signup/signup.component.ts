@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { userDetails } from '../interfaces';
-import {Router} from "@angular/router"
+import {Router} from "@angular/router";
+import { ACCOUNT_CREATE_FAILURE , ACCOUNT_CREATE_SUCCESS, INVALID_FIRST_NAME, INVALID_LAST_NAME, INVALID_EMAIL, INVALID_PASSWORD} from '../app_constants';
 
 @Component({
   selector: 'app-signup',
@@ -11,11 +12,15 @@ import {Router} from "@angular/router"
 })
 export class SignupComponent implements OnInit {
   error: boolean;
+  message: string;
+  INVALID_FIRST_NAME = INVALID_FIRST_NAME;
+  INVALID_LAST_NAME = INVALID_LAST_NAME;
+  INVALID_EMAIL = INVALID_EMAIL;
+  INVALID_PASSWORD = INVALID_PASSWORD;
 
   signupForm: FormGroup
   constructor(private authService: AuthService,
     private router: Router) { 
-    this.error = undefined;
     this.signupForm = new FormGroup({
       firstName: new FormControl('', [
         Validators.minLength(3)
@@ -60,18 +65,24 @@ export class SignupComponent implements OnInit {
       password: this.password.value
     }
     this.authService.createAccount(details).subscribe(response => {
-      this.error = false;
+      this.afterCreationEffects(ACCOUNT_CREATE_SUCCESS, false);
       setTimeout(()=> {
         this.error = undefined;
         this.router.navigate(['/login']);
       }, 3000);
     },
     error => {
-      this.error = true;
+      const message = error.message ? error.message : ACCOUNT_CREATE_FAILURE;
+      this.afterCreationEffects(ACCOUNT_CREATE_FAILURE, true);
       setTimeout(()=> {
         this.error = undefined
-      }, 2000);
+      }, 3000);
     });
+  }
+
+  afterCreationEffects(message: string, error: boolean) {
+    this.error = error;
+    this.message = message
   }
 
 }
