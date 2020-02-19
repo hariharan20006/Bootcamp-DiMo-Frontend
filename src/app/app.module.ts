@@ -16,6 +16,7 @@ import { HttpService } from './services/http.service';
 // import { LoginFormComponent } from './login-form/login-form.component';
 import { BrowserStorage } from './services/browserStorage.service';
 import { MovieSectionComponent } from './movie-section/movie-section.component';
+import { MovieComponentComponent } from './movie-component/movie-component.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { MovieSectionComponent } from './movie-section/movie-section.component';
     SignupComponent,
     DashboardComponent,
     PageNotFoundComponent,
-    MovieSectionComponent
+    MovieSectionComponent,
+    MovieComponentComponent
     // LoginFormComponent
   ],
   imports: [

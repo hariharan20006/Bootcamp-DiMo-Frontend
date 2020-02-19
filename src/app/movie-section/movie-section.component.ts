@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Imovie } from '../movie-component/movie-component.interface';
 
 @Component({
   selector: 'app-movie-section',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./movie-section.component.css']
 })
 export class MovieSectionComponent implements OnInit {
-
-  constructor() { }
+  @Input() sectionDetails: [Imovie];
+  @Input() sectionTitle;
+  constructor() {}
 
   ngOnInit(): void {
+    console.log(this.sectionDetails);
   }
-
 }

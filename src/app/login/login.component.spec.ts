@@ -30,9 +30,11 @@ describe('LoginComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [LoginComponent],
-      imports: [FormsModule, ReactiveFormsModule, RouterTestingModule, HttpClientTestingModule],
+      imports: [FormsModule, ReactiveFormsModule, RouterTestingModule],
       providers: [
-        { provide: AuthService, useClass: MockAuthService }
+        { provide: AuthService, useClass: MockAuthService },
+        HttpClientTestingModule,
+        HttpClient
       ]
     }).compileComponents();
 
