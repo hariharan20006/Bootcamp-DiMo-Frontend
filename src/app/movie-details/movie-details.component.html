@@ -1,10 +1,44 @@
-<div class="w-full">
-    <div  class="flex items-center justify-center w-full h-screen">
-         <div *ngIf="!movieDetails">
-          <app-loader></app-loader>
-         </div>
-         <div *ngIf="movieDetails">
-          Data        
-    </div>
+<div class="w-full h-full">
+      <app-navigation></app-navigation>
+      <div class="movie-details-container ">
+            <div *ngIf="!movieDetails">
+                  <app-loader></app-loader>
+            </div>
+
+            <div *ngIf="movieDetails" class="movie-card">
+                  <div class="movie-img-container">
+                        <img [src]="movieDetails.posterUrl" [alt]="movieDetails.originalTitle" />
+                  </div>
+                  <div class="movie-img-desc text-white">
+                        <div class="flex items-center">
+                              <div class="w-4/5 text-lg">
+                                    {{movieDetails.title}}
+                                    <div class="text-sm mt-1 text-gray-400 mb-4">
+                                          {{movieDetails.tagLine}}
+                                    </div>
+                              </div>
+                              <div
+                                    class="flex items-center justify-center rounded-full w-10 h-10 my-4 border-yellow-300 border-2 p-6">
+                                    {{movieDetails.voteAverage}}
+                              </div>
+                        </div>
+                        
+                        <div class="text-sm mt-1 text-gray-400 movie-overview">
+                              {{movieDetails.overview}}
+                        </div>
+                        <div class="my-4 text-md">{{ movieDetails.releaseDate.substring(0, 4) }}</div>
+
+                        <div class="mt-10 genre-list">
+                              <ul class="flex items-start">
+                                    <li class="border-yellow-300 text-sm border-white border rounded-sm mr-2 px-2 py-1"
+                                          *ngFor="let genre of movieDetails.genres;">{{genre.name}}</li>
+                              </ul>
+                        </div>
+
+
+                  </div>
+            </div>
+
       </div>
+
 </div>
