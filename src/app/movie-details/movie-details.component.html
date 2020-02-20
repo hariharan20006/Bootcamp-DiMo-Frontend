@@ -1,8 +1,10 @@
 <div class="w-full">
-    <div *ngIf="!movieDetails" class="flex items-center justify-center w-full h-screen">
-        <app-loader></app-loader>
+    <div  class="flex items-center justify-center w-full h-screen">
+         <div *ngIf="!movieDetails">
+          <app-loader></app-loader>
+         </div>
+         <div *ngIf="movieDetails">
+          Data        
+    </div>
       </div>
-    <div *ngIf="movieDetails" class="mb-4 inline-block text-red-500">
-            Data        
-      </div>
-</div>>
+</div>

@@ -11,7 +11,7 @@ import { HttpService } from '../services/http.service';
 })
 
 export class MovieDetailsComponent implements OnInit {
-  private movieDetails;
+  public movieDetails;
   constructor(  
     private route: ActivatedRoute, private httpService: HttpService) {}
 

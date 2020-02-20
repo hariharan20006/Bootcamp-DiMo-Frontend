@@ -25,7 +25,7 @@ export class NavigationComponent implements OnInit {
    this.router.navigate(['/login']);
   }
 
-  onMenuClickedMOutside(e: Event) {
+  onMenuClickedOutside(e: Event) {
     if(this.menuOpen){
       this.menuOpen = false;
     }
