@@ -73,7 +73,7 @@ export class SignupComponent implements OnInit {
     },
     error => {
       const message = error.message ? error.message : ACCOUNT_CREATE_FAILURE;
-      this.afterCreationEffects(ACCOUNT_CREATE_FAILURE, true);
+      this.afterCreationEffects(message, true);
       setTimeout(()=> {
         this.error = undefined
       }, 3000);

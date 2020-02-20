@@ -28,10 +28,10 @@ export class HttpService {
     };
     if (error.error instanceof ErrorEvent) {
       // Client-side errors
-      errorMessage.message = "Something Went Wrong";
+      errorMessage.message = error.error.message ? error.error.message :   "Something Went Wrong";
     } else {
       // Server-side errors
-      errorMessage.message = error.message;
+      errorMessage.message = error.error.error.message ? error.error.error.message: 'something went wrong on server';
     }
 
     return throwError(errorMessage);

@@ -5,7 +5,6 @@ import { userDetails, postSuccessResponse } from '../interfaces';
 import { CREATE_USER_URL } from '../app_constants';
 import { LoginResponse } from '../login/login.component';
 import BrowserStorage, {  browserStorage } from './browserStorage.service';
-import { error } from 'protractor';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +26,12 @@ export class AuthService {
    } else {
      this.setIsUSerValid(false);
    }
+  }
+
+  public logout() {
+    browserStorage.remove('token');
+    this.setIsUSerValid(false);
+
   }
 
   private setIsUSerValid(value: boolean) {
