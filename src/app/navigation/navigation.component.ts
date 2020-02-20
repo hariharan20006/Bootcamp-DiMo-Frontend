@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { routeMapping } from '../static-data';
+import { browserStorage } from '../services/browserStorage.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navigation',
@@ -8,7 +10,7 @@ import { routeMapping } from '../static-data';
 })
 export class NavigationComponent implements OnInit {
   public menuOpen: Boolean = false;
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
   
@@ -17,7 +19,8 @@ export class NavigationComponent implements OnInit {
   }
 
   logout(){
-    //Todo: remove token from browser storage
+    browserStorage.remove('token');
+    this.router.navigate(['/login'])
   }
 
 
