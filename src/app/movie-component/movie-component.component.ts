@@ -2,6 +2,12 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Imovie } from './movie-component.interface';
 import { Router } from '@angular/router';
 
+import {
+  ConnectionPositionPair,
+  Overlay,
+  OverlayRef
+} from '@angular/cdk/overlay';
+
 @Component({
   selector: 'app-movie-component',
   templateUrl: './movie-component.component.html',
@@ -16,7 +22,7 @@ export class MovieComponentComponent implements OnInit {
     console.log(this.movieDetails);
   }
 
-  openMovieDetails(movieId: String) {
+  openMovieDetails(movieId: string) {
     this.router.navigate([`/movie-details/${movieId}`]);
   }
 }

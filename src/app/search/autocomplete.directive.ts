@@ -55,9 +55,11 @@ export class AutocompleteDirective implements OnInit {
     this.overlayRef = this.overlay.create({
       width: this.origin.offsetWidth,
       maxHeight: 40 * 3,
-      backdropClass: '',
+      // backdropClass: '',
       scrollStrategy: this.overlay.scrollStrategies.reposition(),
-      positionStrategy: this.getOverlayPosition()
+      positionStrategy: this.getOverlayPosition(),
+      disposeOnNavigation: true,
+      backdropClass: 'cdk-overlay-transparent-backdrop'
     });
 
     const template = new TemplatePortal(
@@ -89,7 +91,7 @@ export class AutocompleteDirective implements OnInit {
         { overlayX: 'start', overlayY: 'bottom' }
       )
     ];
-    console.log("POSITION", positions);
+    // console.log("POSITION", positions);
 
     return this.overlay
       .position()
@@ -112,16 +114,17 @@ export function overlayClickOutside(
     // @ts-ignore
     filter((event) => {
       const clickTarget = event.target as HTMLElement;
-      const notOrigin = clickTarget !== origin; // the input
-      // const notOverlay =
-      //   !!overlayRef &&
-      //   overlayRef.overlayElement.contains(clickTarget) === false; // the autocomplete
-      // return notOrigin && notOverlay;
-      // console.log(overlayRef.overlayElement.contains(clickTarget));
-      // return overlayRef.overlayElement.contains(clickTarget);
-      // return overlayRef.overlayElement.contains(clickTarget);
 
-      return clickTarget.querySelector('.search---container');
+      // INFO: on option click, close overlay
+      if (clickTarget.classList.value === 'option-list') {
+        return true;
+      }
+
+      const notOrigin = clickTarget !== origin; // the input
+      const notOverlay =
+        !!overlayRef &&
+        overlayRef.overlayElement.contains(clickTarget) === false; // the autocomplete
+      return notOrigin && notOverlay;
     }),
     takeUntil(overlayRef.detachments())
   );

@@ -13,6 +13,12 @@
   display: block;
 }
 
-.option:hover {
-  background-color: lightgrey;
+.option:hover  {
+  background-color: red;
+  color: black !important;
+}
+
+
+.option:hover + a.search-option {
+    color: black;
 }
