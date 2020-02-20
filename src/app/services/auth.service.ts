@@ -20,7 +20,6 @@ export class AuthService {
 
   public getValidUser() {
    let val = this.browserStorage.get('token');
-    console.log('stogdd', val);
    if (val) {
      this.setIsUSerValid(true);
    } else {

@@ -41,13 +41,8 @@ export class LoginComponent implements OnInit {
       password: this.formControlValue('password')
     }
     this.authService.login(payload)
-      .subscribe(token => {
-        this.error = false;
-        this.message = 'Loggen In';
-        setTimeout(() => {
-          this.error = undefined;
-          this.router.navigate(['dashboard']);
-        }, 3000);
+    .subscribe(token => {
+      this.router.navigate(['dashboard']);
         },
         err => {
           this.error = true;

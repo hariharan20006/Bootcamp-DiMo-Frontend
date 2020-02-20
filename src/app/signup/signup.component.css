@@ -12,7 +12,7 @@
   margin-left: 10rem;
 }
 
-@media(max-width: 450px) {
+@media(max-width: 550px) {
   .ww-signup__block {
     width: 75%;
   }
