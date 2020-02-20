@@ -5,25 +5,15 @@
     "ng": "ng",
     "build": "ng build",
     "test": "ng test",
-<<<<<<< HEAD
-    "test:ci": "ng test --watch=false --browsers=ChromeHeadlessCustom",
-=======
     "test-ci": "ng test --no-watch --browsers=ChromeHeadlessCustom",
->>>>>>> master
     "lint": "ng lint",
     "e2e": "ng e2e",
     "heroku-postbuild": "ng build --prod",
     "post-install": "ng build --aot --prod",
-<<<<<<< HEAD
     "start": "node server.js",
     "postinstall": "ng build --aot --prod",
     "build:ci": "npm run build:prod"
-  }
-  ,
-=======
-    "start": "node server.js"
   },
->>>>>>> master
   "private": true,
   "dependencies": {
     "@angular/animations": "~9.0.1",
