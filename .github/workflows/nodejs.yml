@@ -27,10 +27,22 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - run: npm install
+    
+    - name: npm ci and npm run build
+      run: |
+        npm ci
+        npm run test-ci
+        npm run build --if-present
+
+    - uses: 8398a7/action-slack@v2
+      with:
+        status: ${{ job.status }}
+        author_name: Integration Test # default: 8398a7@action-slack
+        channel: '#ci-status'
       env:
-        CI: true
-    - run: |
-        npm run build:ci
-        echo "Build successfull"
-        echo ""
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # required
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }} # required
+      # if: always() # Pick up events even if the job fails or is canceled.
+      # if: failure() # Pick up events even if the job fails or is canceled.
+
+      

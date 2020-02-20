@@ -1,0 +1,33 @@
+.ww-login__form {
+  width: 33.3333%;
+}
+
+.ww-login__button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-link {
+  margin-left: 6rem;
+}
+
+@media(max-width: 450px) {
+  .ww-login__form {
+    width: 75%;
+  }
+  .ww-login__button {
+    display: block;
+    text-align: center;
+  }
+
+  .signup-link {
+    margin-top: 1rem;
+    margin-left: 0;
+  }
+
+  button {
+    margin-left: 1rem;
+  }
+
+}

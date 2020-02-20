@@ -1,25 +1,77 @@
-<div class="flex justify-center items-center h-screen">
-  <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col w-4/12" >
-    <div class="mb-4">
-      <label class="block text-grey-darker text-sm font-bold mb-2" for="username">
-        Username
-      </label>
-      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="username" type="text" placeholder="Username">
+<div class="flex justify-center items-center slide-background h-full">
+  <div
+    class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col ww-login__form"
+  >
+    <app-logo></app-logo>
+    <div *ngIf="error" class="mb-4 inline-block text-red-500">
+      Invalid Credentials
     </div>
-    <div class="mb-6">
-      <label class="block text-grey-darker text-sm font-bold mb-2" for="password">
-        Password
-      </label>
-      <input class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3" id="password" type="password" placeholder="******************">
-      <p class="text-red text-xs italic">Please choose a password.</p>
-    </div>
-    <div class="flex items-center justify-between">
-      <button class="bg-blue hover:bg-blue-dark text-white font-bold py-2 px-4 rounded" type="button">
-        Sign In
-      </button>
-      <a class="inline-block align-baseline font-bold text-sm text-blue hover:text-blue-darker" routerLink="/signup">
-        Sign Up
-      </a>
-    </div>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="mb-4">
+        <label
+          class="block text-gray-700 text-sm font-bold mb-2"
+          for="email"
+        >
+          Email
+        </label>
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker"
+          formControlName="email"
+          id="email"
+          type="email"
+          placeholder="Email"
+        />
+        <div
+          *ngIf="email.invalid && email.dirty && email.touched"
+          class="text-error bg-grey-400"
+        >
+          Email address is invalid
+        </div>
+      </div>
+      <div class="mb-6">
+        <label
+          class="block text-gray-700 text-sm font-bold mb-2"
+          for="password"
+        >
+          Password
+        </label>
+        <input
+          class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3"
+          formControlName="password"
+          id="password"
+          type="password"
+          placeholder="******************"
+        />
+        <div
+          *ngIf="password.invalid && password.touched"
+          class="text-error bg-grey-400"
+        >
+          Please enter password
+        </div>
+      </div>
+      <div class="ww-login__button">
+        <button
+          class="bg-red-700 w-40 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+          type="submit"
+          [disabled]="!loginForm.valid"
+          [ngClass]="{
+            'opacity-50': !loginForm.valid,
+            'cursor-not-allowed': !loginForm.valid
+          }"
+        >
+          Sign In
+        </button>
+
+        <div class="signup-link">
+          <span class="text-sm text-gray-500 mr-2"> Don't have an account?</span>
+          <a class="inline-block align-baseline font-bold text-blue-900 hover:text-blue-700" routerLink="/signup">
+            Sign up
+          </a>
+        </div>
+
+       
+      </div>
+    </form>
   </div>
 </div>

@@ -1,0 +1,11 @@
+<div>
+  <p class="text-lg my-5 text-2xl">{{ sectionTitle }}</p>
+  <div class="flex">
+    <div *ngFor="let movie of sectionDetails">
+      <app-movie-component
+        [movieDetails]="movie"
+        class="mr-6"
+      ></app-movie-component>
+    </div>
+  </div>
+</div>

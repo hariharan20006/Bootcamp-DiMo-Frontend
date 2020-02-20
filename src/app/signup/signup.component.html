@@ -1,35 +1,126 @@
-<div class="flex justify-center items-center h-screen">
-  <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col w-4/12" >
+<div class="flex justify-center items-center h-screen slide-background">
+  <div
+    class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col ww-signup__block"
+  >
+  <app-logo></app-logo>
+    <div
+      *ngIf="error !== undefined"
+      class="mb-4 inline-block "
+      [ngClass]="{ 'text-green-500': !error, 'text-red-500': error }"
+    >
+      {{ message }}
+    </div>
     <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
-    <div class="mb-4">
-      <label class="block text-grey-darker text-sm font-bold mb-2" for="name">
-        Name
-      </label>
-      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker" id="name" formControlName="name" type="text" placeholder="Name">
-      <div *ngIf="name.invalid && (name.dirty && name.touched)" class="text-error bg-grey-400" id="namewarning"> Name must be minimum 3 characters</div>
-    </div>
-    <div class="mb-6">
-      <label class="block text-grey-darker text-sm font-bold mb-2" for="email">
-        Email
-      </label>
-      <input class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3" id="email" formControlName="email" type="email" placeholder="example@gmail.com">
-      <div *ngIf="email.invalid && (email.dirty && email.touched)" class="text-error bg-grey-400" >not a valid Email address</div>
-    </div>
-    <div class="mb-6">
-      <label class="block text-grey-darker text-sm font-bold mb-2" for="password">
-        Password
-      </label>
-      <input class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3" id="password" formControlName="password" type="password" placeholder="******************">
-      <div *ngIf="password.invalid && (password.dirty && password.touched)" class="text-error bg-grey-400">Password must be 7 to 15 characters, numeric digits, underscore and first character must be a letter</div>
-    </div>
-    <div class="flex items-center justify-between">
-      <button [disabled]="!signupForm.valid" class="bg-blue hover:bg-blue-dark text-blue font-bold py-2 px-4 rounded" type="submit" >
-        Sign Up
-      </button>
-      <a class="inline-block align-baseline font-bold text-sm text-blue hover:text-blue-darker" routerLink="/login">
-        Login
-      </a>
-    </div>
-  </form>
+      <div class="mb-3">
+        <label
+          class="block text-gray-700 text-sm font-bold mb-2"
+          for="firstName"
+        >
+          First Name
+        </label>
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker"
+          id="firstName"
+          formControlName="firstName"
+          type="text"
+          placeholder="First Name"
+        />
+        <div
+          *ngIf="firstName.invalid && firstName.dirty"
+          class="text-error bg-grey-400"
+          id="firstNamewarning"
+        >
+          {{ INVALID_FIRST_NAME }}
+        </div>
+      </div>
+      <div class="mb-3">
+        <label
+          class="block text-gray-700 text-sm font-bold mb-2"
+          for="lastName"
+        >
+          Last Name
+        </label>
+        <input
+          class="shadow appearance-none border rounded w-full py-2 px-3 text-grey-darker"
+          id="lastName"
+          formControlName="lastName"
+          type="text"
+          placeholder="Last Name"
+        />
+        <div
+          *ngIf="lastName.invalid && lastName.dirty"
+          class="text-error bg-grey-400"
+          id="lastNamewarning"
+        >
+          {{ INVALID_LAST_NAME }}
+        </div>
+      </div>
+      <div class="mb-3">
+        <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+          Email
+        </label>
+        <input
+          class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3"
+          id="email"
+          formControlName="email"
+          type="email"
+          placeholder="example@gmail.com"
+        />
+        <div
+          *ngIf="email.invalid && email.dirty"
+          class="text-error bg-grey-400"
+        >
+          {{ INVALID_EMAIL }}
+        </div>
+      </div>
+      <div class="mb-6">
+        <label
+          class="block text-gray-700 text-sm font-bold mb-2"
+          for="password"
+        >
+          Password
+        </label>
+        <input
+          class="shadow appearance-none border border-red rounded w-full py-2 px-3 text-grey-darker mb-3"
+          id="password"
+          formControlName="password"
+          type="password"
+          placeholder="******************"
+        />
+        <div
+          *ngIf="password.invalid && password.dirty"
+          class="text-error bg-grey-400"
+        >
+          {{ INVALID_PASSWORD }}
+        </div>
+      </div>
+      <div class="ww-signup__button">
+        <button
+          class="bg-red-700 w-40 hover:bg-red-500 text-white font-bold py-2 px-4 rounded"
+          type="submit"
+          [disabled]="!signupForm.valid"
+          [ngClass]="{
+            'opacity-50': !signupForm.valid,
+            'cursor-not-allowed': !signupForm.valid
+          }"
+        >
+          Sign Up
+        </button>
+        <div class="login-link">
+          <span class="text-sm text-gray-500 mr-2"> Already a user?</span>
+          <a
+            class="inline-block align-baseline font-bold text-blue-900 hover:text-blue-700"
+            routerLink="/login"
+          >
+            Login
+          </a>
+        </div>
+      </div>
+    </form>
   </div>
 </div>
+
+<!-- <button [disabled]="!signupForm.valid" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" type="submit" [ngClass]="{
+        'opacity-50': !signupForm.valid,
+        'cursor-not-allowed': !signupForm.valid
+      }"> -->

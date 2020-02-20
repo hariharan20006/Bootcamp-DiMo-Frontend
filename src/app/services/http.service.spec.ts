@@ -30,4 +30,9 @@ describe('HttpService', () => {
     expect(service.Patch({})).toBeTruthy();
   });
 
+  it('should return valid url', ()=> {
+    const path = 'user/login';
+    expect(service.getUrl(path)).toEqual('https://dimo-wildwolves.herokuapp.com'+path);
+  });
+
 });
