@@ -15,6 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpService } from './services/http.service';
 // import { LoginFormComponent } from './login-form/login-form.component';
 import { BrowserStorage } from './services/browserStorage.service';
+import { SearchComponent } from './search/search.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import { BrowserStorage } from './services/browserStorage.service';
     LoginComponent,
     SignupComponent,
     DashboardComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    SearchComponent
     // LoginFormComponent
   ],
   imports: [
