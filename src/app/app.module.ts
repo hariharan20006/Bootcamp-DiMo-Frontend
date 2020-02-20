@@ -19,6 +19,7 @@ import { MovieSectionComponent } from './movie-section/movie-section.component';
 import { MovieComponentComponent } from './movie-component/movie-component.component';
 import { LogoComponent } from './logo/logo.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { MovieDetailsComponent } from './movie-details/movie-details.component';
     MovieSectionComponent,
     MovieComponentComponent,
     LogoComponent,
-    MovieDetailsComponent
+    MovieDetailsComponent,
+    UserProfileComponent
     // LoginFormComponent
   ],
   imports: [
