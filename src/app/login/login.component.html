@@ -4,9 +4,8 @@
   >
     <app-logo></app-logo>
     <div
-      *ngIf="error !== undefined"
-      class="mb-4 inline-block "
-      [ngClass]="{ 'text-green-500': !error, 'text-red-500': error }"
+      *ngIf="error"
+      class="mb-4 inline-block text-red-500"
     >
       {{ message }}
     </div>
