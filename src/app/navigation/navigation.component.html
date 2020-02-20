@@ -1,30 +1,66 @@
-<nav class="flex items-center justify-between flex-wrap px-10 py-4 fixed w-full top-0">
-    <div class="flex item-center w-16 h-10" style="filter: brightness(0) invert(1);">
-      <a class="text-white navbarText w-full inline-block" routerLink="/dashboard">
-        <img src="../../assets/DiMoLogoFinal-1.png" alt="App Logo">
-      </a> 
+<nav
+  class="flex items-center justify-between flex-wrap px-10 py-4 fixed w-full top-0 z-50"
+>
+  <div
+    class="flex item-center w-16 h-10"
+    style="filter: brightness(0) invert(1);"
+  >
+    <a
+      class="text-white navbarText w-full inline-block"
+      routerLink="/dashboard"
+    >
+      <img src="../../assets/DiMoLogoFinal-1.png" alt="App Logo" />
+    </a>
+  </div>
+  <div
+    class="inline-block text-lg flex item-center bg-gray-200 md:w-2/5 sm:w-3/5 rounded  blur-bg search-input"
+  >
+    <div class="flex-1 sm:w-2/4">
+      <input
+        type="text"
+        class="rounded pl-8 form-control bg-transparent  text-white p-2 w-full outline-none"
+        placeholder="Search"
+      />
     </div>
-    <div class="inline-block text-lg flex item-center bg-gray-200 md:w-2/5 sm:w-3/5 rounded  blur-bg search-input">
-      <div class="flex-1 sm:w-2/4">
-        <input type="text" class="rounded pl-8 form-control bg-transparent  text-white p-2 w-full outline-none" placeholder="Search">
-      </div>
-      <div class="flex items-center mr-5">
-        <svg class="fill-current pointer-events-none text-gray-200 w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"></path></svg>
-      </div>
+    <div class="flex items-center mr-5">
+      <svg
+        class="fill-current pointer-events-none text-gray-200 w-4 h-4"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 20 20"
+      >
+        <path
+          d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"
+        ></path>
+      </svg>
     </div>
-    <div class="flex relative">
-      <div class="text-white mr-4 user-name">John</div>
-      <div class="flex items-center cursor-pointer" (click)="toggleMenu()">
-        <img class="w-6 h-6" src="../../assets/person-icon.png" alt="An Image of Person">
-      </div>
-      <ul class="flex flex-col text-right absolute menu top-0  w-40 blur-bg" style="z-index:1; top: 35px; right: -12px;" *ngIf="this.menuOpen">
-        <li class="mr-6 p-2">
-          <a class="text-white navbarText w-full inline-block" routerLink="/profile">View Profile</a> 
-        </li>
-        <li class="mr-6 p-2 text-white navbarText cursor-pointer" (click)="logout()">
-          Logout
-        </li>
-      </ul>
+  </div>
+  <div class="flex relative">
+    <div class="text-white mr-4 user-name">John</div>
+    <div class="flex items-center cursor-pointer" (click)="toggleMenu()">
+      <img
+        class="w-6 h-6"
+        src="../../assets/person-icon.png"
+        alt="An Image of Person"
+      />
     </div>
+    <ul
+      class="flex flex-col text-right absolute menu top-0  w-40 blur-bg"
+      style="z-index:1; top: 35px; right: -12px;"
+      *ngIf="this.menuOpen"
+    >
+      <li class="mr-6 p-2">
+        <a
+          class="text-white navbarText w-full inline-block"
+          routerLink="/profile"
+          >View Profile</a
+        >
+      </li>
+      <li
+        class="mr-6 p-2 text-white navbarText cursor-pointer"
+        (click)="logout()"
+      >
+        Logout
+      </li>
+    </ul>
+  </div>
 </nav>
-
