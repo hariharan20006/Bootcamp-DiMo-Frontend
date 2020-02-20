@@ -15,12 +15,11 @@ export class MovieDetailsComponent implements OnInit {
   constructor(  
     private route: ActivatedRoute, private httpService: HttpService) {}
 
-  async ngOnInit() {
+   ngOnInit() {
     let id = this.route.snapshot.paramMap.get('id');
-    await this.httpService
+     this.httpService
       .Get<[Imovie]>(`/api/movies/${id}`)
       .subscribe(data => {
-        console.log(data);
         this.movieDetails = data;
       });
   }

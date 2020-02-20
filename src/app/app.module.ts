@@ -20,6 +20,7 @@ import { MovieComponentComponent } from './movie-component/movie-component.compo
 import { LogoComponent } from './logo/logo.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
     MovieComponentComponent,
     LogoComponent,
     MovieDetailsComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    LoaderComponent
     // LoginFormComponent
   ],
   imports: [
