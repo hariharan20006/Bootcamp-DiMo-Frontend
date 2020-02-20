@@ -22,16 +22,19 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    canActivate: [AuthGuardService],
     pathMatch: 'full'
   },
   {
     path: 'signup',
     component: SignupComponent,
+    canActivate: [AuthGuardService],
     pathMatch: 'full'
   },
   {
     path: 'dashboard',
     component: DashboardComponent,
+    canActivate: [AuthGuardService],
     pathMatch: 'full'
   },
   {

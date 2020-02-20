@@ -13,8 +13,6 @@ import { AttachAuthTokenInterceptor } from 'src/interceptors/attach-auth-token.i
 import { AuthService } from './services/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpService } from './services/http.service';
-// import { LoginFormComponent } from './login-form/login-form.component';
-import { BrowserStorage } from './services/browserStorage.service';
 import { MovieSectionComponent } from './movie-section/movie-section.component';
 import { MovieComponentComponent } from './movie-component/movie-component.component';
 import { LogoComponent } from './logo/logo.component';

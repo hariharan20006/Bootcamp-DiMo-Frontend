@@ -6,7 +6,7 @@ interface IStore {
   remove(key: string): void;
 }
 
-export class BrowserStorage implements IStore {
+export default class BrowserStorage implements IStore {
   static checkStorageAvailability(storage: Storage): boolean {
     try {
       storage.setItem('test', 'test');
