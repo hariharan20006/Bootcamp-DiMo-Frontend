@@ -1,4 +1,6 @@
-
+#movieSearchInput:focus{
+  border: 1px solid red;
+}
 /*! bulma.io v0.7.2 | MIT License | github.com/jgthms/bulma */
 @-webkit-keyframes spinAround {
   from {
