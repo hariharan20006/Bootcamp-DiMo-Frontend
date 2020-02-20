@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HttpService } from '../services/http.service';
 import { browserStorage } from '../services/browserStorage.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +13,8 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   error: boolean;
-  constructor(private httpService: HttpService, private router: Router) {
+  message: string;
+  constructor(private router: Router, private authService: AuthService) {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required])
@@ -34,27 +36,20 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log(
-      this.formControlValue('email'),
-      this.formControlValue('password')
-    );
-    let response = {
-      token: '34567567897890'
-    };
-
-    this.httpService
-      .Post<LoginResponse, any>('/api/profile/login', {
-        emailId: this.formControlValue('email'),
-        password: this.formControlValue('password')
-      })
-      .subscribe(
-        token => {
-          this.error = false;
-          browserStorage.save('token', token);
-          this.router.navigate(['/dashboard']);
+    let payload = {
+      emailId: this.formControlValue('email'),
+      password: this.formControlValue('password')
+    }
+    this.authService.login(payload)
+    .subscribe(token => {
+      this.router.navigate(['dashboard']);
         },
         err => {
           this.error = true;
+          this.message = err.message ? err.message : 'not a valid user';
+          setTimeout(() => {
+            this.error = undefined;
+          }, 3000);
           // TODO: Show Erro Message to user
           console.error('Observer got an error: ' + err);
         },

@@ -5,17 +5,16 @@ import {
   FormsModule,
   AbstractControl
 } from '@angular/forms';
-import { strict } from 'assert';
 import { AuthService } from '../services/auth.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { HttpClient } from '@angular/common/http';
 import { userDetails } from '../interfaces';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { LoginComponent } from './login.component';
 
 class MockAuthService {
-  public createAccount(userDetails: userDetails) {}
+  public createAccount(userDetails: userDetails) {};
+  public login(paylod: any) {};
 }
 
 describe('LoginComponent', () => {
@@ -30,7 +29,7 @@ describe('LoginComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [LoginComponent],
-      imports: [FormsModule, ReactiveFormsModule, RouterTestingModule, HttpClientTestingModule],
+      imports: [FormsModule, ReactiveFormsModule, RouterTestingModule],
       providers: [
         { provide: AuthService, useClass: MockAuthService },
       ]

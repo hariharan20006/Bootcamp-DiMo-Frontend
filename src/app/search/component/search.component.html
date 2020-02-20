@@ -1,23 +1,25 @@
-<div class="control">
-    <input class="input is-medium" (keyup)="onKeyUp($event)" placeholder="Search..." [formControl]="control" [appAutocomplete]="autocomplete">
+<div class="search---container">
+    <div class="control">
+        <input class="rounded pl-8 form-control bg-transparent  text-white p-2 w-full outline-none" (keyup)="onKeyUp($event)" placeholder="Search..." [formControl]="control" [appAutocomplete]="autocomplete">
+    </div>
+    
+    <!-- <p style="color: black; font-size: 18px; margin-bottom: 10px;">{{control.value}}</p> -->
+    
+    <app-autocomplete #autocomplete="appAutocomplete">
+        <ng-template appAutocompleteContent>
+            <ng-container *ngIf="(options) as result">
+                <app-option *ngFor="let option of result" [value]="option.label">
+                    <div>
+                        <a href="/movies/{{option.id}}">
+                            <img src="{{option.posterUrl}}" alt="" srcset="" style="display: inline-block; width: 40%; height: 100%;" />
+                            <div style="display: inline-block; width: 60%;">
+                                {{ option.label }}
+                            </div>
+                        </a>
+                    </div>
+                </app-option>
+                <app-option class="no-result" *ngIf="!result.length">No result...</app-option>
+            </ng-container>
+        </ng-template>
+    </app-autocomplete>
 </div>
-
-<p style="color: black; font-size: 18px; margin-bottom: 10px;">{{control.value}}</p>
-
-<app-autocomplete #autocomplete="appAutocomplete">
-    <ng-template appAutocompleteContent>
-        <ng-container *ngIf="(options | filter: control.value) as result">
-            <app-option *ngFor="let option of result" [value]="option.label">
-                <div>
-                    <a href="/movies/{{option.id}}">
-                        <img src="{{option.posterUrl}}" alt="" srcset="" style="display: inline-block; width: 40%; height: 100%;" />
-                        <div style="display: inline-block; width: 60%;">
-                            {{ option.label }}
-                        </div>
-                    </a>
-                </div>
-            </app-option>
-            <app-option class="no-result" *ngIf="!result.length">No result...</app-option>
-        </ng-container>
-    </ng-template>
-</app-autocomplete>

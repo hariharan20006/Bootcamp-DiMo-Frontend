@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { ClickOutsideModule } from 'ng-click-outside';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -13,8 +14,6 @@ import { AttachAuthTokenInterceptor } from 'src/interceptors/attach-auth-token.i
 import { AuthService } from './services/auth.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpService } from './services/http.service';
-// import { LoginFormComponent } from './login-form/login-form.component';
-import { BrowserStorage } from './services/browserStorage.service';
 import { MovieSectionComponent } from './movie-section/movie-section.component';
 import { MovieComponentComponent } from './movie-component/movie-component.component';
 import { LogoComponent } from './logo/logo.component';
@@ -23,6 +22,10 @@ import { FilterPipe } from './filter.pipe';
 import { AutocompleteModule } from './search/autocomplete.module';
 import { OverlayModule } from '@angular/cdk/overlay';
 import { SearchComponent } from './search/component/search.component';
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
+import { UserProfileComponent } from './user-profile/user-profile.component';
+import { LoaderComponent } from './loader/loader.component';
+import { MovieCarouselComponent } from './movie-carousel/movie-carousel.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +40,10 @@ import { SearchComponent } from './search/component/search.component';
     LogoComponent,
     FilterPipe,
     SearchComponent,
+    MovieDetailsComponent,
+    UserProfileComponent,
+    LoaderComponent,
+    MovieCarouselComponent
     // LoginFormComponent
   ],
   imports: [
@@ -46,6 +53,7 @@ import { SearchComponent } from './search/component/search.component';
     ReactiveFormsModule,
     AutocompleteModule,
     OverlayModule,
+    ClickOutsideModule
   ],
   providers: [
     {

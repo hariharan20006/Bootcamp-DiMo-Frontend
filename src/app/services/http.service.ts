@@ -23,13 +23,15 @@ export class HttpService {
   }
 
   handleError(error: HttpErrorResponse) {
-    let errorMessage = 'Unknown error!';
+    let errorMessage = {
+      message: 'unknown error'
+    };
     if (error.error instanceof ErrorEvent) {
       // Client-side errors
-      errorMessage = `Error: ${error.error.message}`;
+      errorMessage.message = error.error.message ? error.error.message :   "Something Went Wrong";
     } else {
       // Server-side errors
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+      errorMessage.message = error.error.error.message ? error.error.error.message: 'something went wrong on server';
     }
 
     return throwError(errorMessage);

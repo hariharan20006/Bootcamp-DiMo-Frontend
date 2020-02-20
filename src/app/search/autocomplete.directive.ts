@@ -89,6 +89,7 @@ export class AutocompleteDirective implements OnInit {
         { overlayX: 'start', overlayY: 'bottom' }
       )
     ];
+    console.log("POSITION", positions);
 
     return this.overlay
       .position()
@@ -108,13 +109,19 @@ export function overlayClickOutside(
   origin: HTMLElement
 ) {
   return fromEvent<MouseEvent>(document, 'click').pipe(
-    filter(event => {
+    // @ts-ignore
+    filter((event) => {
       const clickTarget = event.target as HTMLElement;
       const notOrigin = clickTarget !== origin; // the input
-      const notOverlay =
-        !!overlayRef &&
-        overlayRef.overlayElement.contains(clickTarget) === false; // the autocomplete
-      return notOrigin && notOverlay;
+      // const notOverlay =
+      //   !!overlayRef &&
+      //   overlayRef.overlayElement.contains(clickTarget) === false; // the autocomplete
+      // return notOrigin && notOverlay;
+      // console.log(overlayRef.overlayElement.contains(clickTarget));
+      // return overlayRef.overlayElement.contains(clickTarget);
+      // return overlayRef.overlayElement.contains(clickTarget);
+
+      return clickTarget.querySelector('.search---container');
     }),
     takeUntil(overlayRef.detachments())
   );

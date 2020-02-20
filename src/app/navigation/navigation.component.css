@@ -2,3 +2,23 @@
     max-width: 50%;
     height: auto;
 }
+
+.navbarText:hover {
+    color: #eb1a1a
+}
+
+.blur-bg {
+    background-color: #e6e6e629;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+    .search-input {
+        width: 61%;
+    }
+
+    .user-name {
+        display: none;
+    }
+}
