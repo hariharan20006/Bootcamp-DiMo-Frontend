@@ -18,6 +18,11 @@ import { BrowserStorage } from './services/browserStorage.service';
 import { MovieSectionComponent } from './movie-section/movie-section.component';
 import { MovieComponentComponent } from './movie-component/movie-component.component';
 import { LogoComponent } from './logo/logo.component';
+import { FilterPipe } from './filter.pipe';
+
+import { AutocompleteModule } from './search/autocomplete.module';
+import { OverlayModule } from '@angular/cdk/overlay';
+import { SearchComponent } from './search/component/search.component';
 
 @NgModule({
   declarations: [
@@ -29,14 +34,18 @@ import { LogoComponent } from './logo/logo.component';
     PageNotFoundComponent,
     MovieSectionComponent,
     MovieComponentComponent,
-    LogoComponent
+    LogoComponent,
+    FilterPipe,
+    SearchComponent,
     // LoginFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AutocompleteModule,
+    OverlayModule,
   ],
   providers: [
     {

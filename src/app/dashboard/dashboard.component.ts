@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../services/http.service';
 import { Imovie } from '../movie-component/movie-component.interface';
 import { HttpParams } from '@angular/common/http';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard',
