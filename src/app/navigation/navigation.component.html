@@ -34,8 +34,12 @@
       </svg>
     </div>
   </div>
-  <div class="flex relative" (clickOutside)="onMenuClickedOutside($event)">
-    <div class="text-white mr-4 user-name">John</div>
+  <div
+    *ngIf="userDetails"
+    class="flex relative"
+    (clickOutside)="onMenuClickedOutside($event)"
+  >
+    <div class="text-white mr-4 user-name">{{ userDetails.firstName }}</div>
     <div class="flex items-center cursor-pointer" (click)="toggleMenu()">
       <img
         class="w-6 h-6"

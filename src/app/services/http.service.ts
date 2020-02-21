@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import {
   HttpClient,
   HttpParams,
-  HttpErrorResponse
+  HttpErrorResponse,
+  HttpHeaders
 } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 
@@ -28,10 +29,14 @@ export class HttpService {
     };
     if (error.error instanceof ErrorEvent) {
       // Client-side errors
-      errorMessage.message = error.error.message ? error.error.message :   "Something Went Wrong";
+      errorMessage.message = error.error.message
+        ? error.error.message
+        : 'Something Went Wrong';
     } else {
       // Server-side errors
-      errorMessage.message = error.error.error.message ? error.error.error.message: 'something went wrong on server';
+      errorMessage.message = error.error.error.message
+        ? error.error.error.message
+        : 'something went wrong on server';
     }
 
     return throwError(errorMessage);
@@ -42,11 +47,13 @@ export class HttpService {
    */
   public Get<Response>(
     path: string,
-    params?: HttpParams
+    params?: HttpParams,
+    headers?: HttpHeaders
   ): Observable<Response> {
     return this.httpClient
       .get<Response>(this.getUrl(path), {
-        params
+        params,
+        headers
       })
       .pipe(retry(3), catchError(this.handleError));
   }
