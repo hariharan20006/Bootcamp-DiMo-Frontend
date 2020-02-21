@@ -7,3 +7,24 @@
   height: 400px;
   width: 250px;
 }
+
+
+@media (max-width: 550px) {  
+  .bg-card {
+    height: 200px;
+    width: 100%;
+    margin: 0;
+    max-width: 100%;
+    margin-bottom: 11px;
+}
+
+.bg-card:nth-child(2n){
+  margin-right: 0;
+}
+
+.movie-title, .movie-year {
+ display: none;
+}
+  
+
+}

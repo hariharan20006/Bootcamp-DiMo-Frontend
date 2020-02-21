@@ -18,9 +18,31 @@ export class MovieSectionComponent implements OnInit {
   }
 
   async getMoviesForSection(sectionTitle: String) {
+    function detectMob() {
+      const toMatch = [
+          /Android/i,
+          /webOS/i,
+          /iPhone/i,
+          /iPad/i,
+          /iPod/i,
+          /BlackBerry/i,
+          /Windows Phone/i
+      ];
+  
+      return toMatch.some((toMatchItem) => {
+          return navigator.userAgent.match(toMatchItem);
+      });
+  }
+
+  let pageSize = 5;
+
+  if(detectMob()){
+    pageSize = 4;
+  }
+
     let params = new HttpParams();
     await this.httpService
-      .Get<[Imovie]>(`/api/movies/?genres.name=${sectionTitle}&pageSize=5`)
+      .Get<[Imovie]>(`/api/movies/?genres.name=${sectionTitle}&pageSize=${pageSize}`)
       .subscribe(data => {
         this.sectionDetails = data;
       });

@@ -1,3 +1,38 @@
 .section-card {
   margin-top: 5rem;
 }
+
+/* Desktop */
+.movie-card-container {
+  display: flex;
+}
+
+.movie-card-item {}
+
+
+
+/* Mobile */
+@media (max-width: 550px) { 
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .section-card {
+    margin-top: 2rem;
+  }
+
+  .movie-card-container {
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  
+  .movie-card-item {
+    width: 48%;
+    margin-right: 2%;
+  }
+
+  .movie-card-item:nth-child(2n){
+    margin-right: 0;
+  }
+}
