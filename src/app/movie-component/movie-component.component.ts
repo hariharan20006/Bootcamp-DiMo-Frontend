@@ -12,8 +12,8 @@ export class MovieComponentComponent implements OnInit {
 
   constructor(private router: Router) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
+
 
   openMovieDetails(movieId: String) {
     this.router.navigate([`/movie-details/${movieId}`]);
