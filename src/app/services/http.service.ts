@@ -8,16 +8,21 @@ import {
 import { Observable, throwError } from 'rxjs';
 
 import { catchError, retry } from 'rxjs/operators';
+import BrowserStorage, { browserStorage } from './browserStorage.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HttpService {
+  browserStorage: BrowserStorage;
   // TODO: load from env
   private REST_API_SERVER = 'https://dimo-wildwolves.herokuapp.com';
   // private REST_API_SERVER = "http://localhost:3000";
 
-  constructor(private httpClient: HttpClient) {}
+  constructor(private httpClient: HttpClient, private router: Router) {
+    this.browserStorage = browserStorage;
+  }
 
   getUrl(path: string): string {
     return this.REST_API_SERVER + path;
@@ -34,6 +39,10 @@ export class HttpService {
         : 'Something Went Wrong';
     } else {
       // Server-side errors
+      if (error.error.error.code === 403) {
+        this.browserStorage.remove('token');
+        this.router.navigate(['login']);
+      }
       errorMessage.message = error.error.error.message
         ? error.error.error.message
         : 'something went wrong on server';

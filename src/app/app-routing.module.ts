@@ -4,8 +4,6 @@ import { LoginComponent } from './login/login.component';
 import { AppComponent } from './app.component';
 import { SignupComponent } from './signup/signup.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { AuthComponent } from './authentication/auth/auth.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { UserProfileComponent } from './user-profile/user-profile.component';
@@ -56,6 +54,11 @@ const routes: Routes = [
     component: AppComponent,
     canActivate: [AuthGuardService],
     pathMatch: 'full'
+  },
+  {
+    path: '**',
+    component: LoginComponent,
+    canActivate: [AuthGuardService]
   }
 
 ];

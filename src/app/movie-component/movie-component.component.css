@@ -7,3 +7,8 @@
   height: 400px;
   width: 250px;
 }
+
+.hover-effect:hover {
+  box-shadow: 1px 8px 20px #eb1a1aa3;
+  -webkit-transition: box-shadow 0.1s ease-in;
+}
