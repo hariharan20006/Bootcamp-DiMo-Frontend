@@ -66,7 +66,7 @@ export class SignupComponent implements OnInit {
       this.afterCreationEffects(ACCOUNT_CREATE_SUCCESS, false);
       setTimeout(()=> {
         this.error = undefined;
-        this.router.navigate(['/login']);
+        this.router.navigate(['/dashboard']);
       }, 3000);
     },
     error => {
