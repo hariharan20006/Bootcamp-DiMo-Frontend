@@ -1,3 +1,58 @@
 .userPrfile {
-  
+  width: 60%;
+  height: 80%;
+  /* background-color: azure; */
+  margin: 10rem auto 0 auto;
+}
+
+
+.userImage {
+  width: 20%;
+  /* background-color: cadetblue; */
+}
+
+.dash-button {
+  margin: 4rem 0 0 10rem;
+  background-color: red;
+  border: 2px red solid;
+  height: 3rem;
+  border-radius: 3px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  -ms-border-radius: 3px;
+  -o-border-radius: 3px;
+}
+
+.name {
+  color: aliceblue;
+  font-size: 10rem;
+}
+
+.image {
+  height: 10rem;
+  width: 10rem;
+}
+
+.userDetails {
+  width: 80%;
+  align-items: flex-start;
+  padding: 10px 0 0 50px;
+  line-height: 1;
+  /* background-color: blue; */
+}
+
+.item-tab {
+  display: inline-block;
+  text-align: center;
+  width: 7rem;
+  height: 3rem;
+  margin: 1rem 0 0 2rem;
+  padding-top: 14px;
+  background-color: grey;
+  border: 1px grey solid;
+  border-radius: .6rem;
+  -webkit-border-radius: .6rem;
+  -moz-border-radius: .6rem;
+  -ms-border-radius: .6rem;
+  -o-border-radius: .6rem;
 }

@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
         },
         err => {
           this.error = true;
-          this.message = err.message ? err.message : 'not a valid user';
+          this.message = 'Invalid Credentials';
           setTimeout(() => {
             this.error = undefined;
           }, 3000);

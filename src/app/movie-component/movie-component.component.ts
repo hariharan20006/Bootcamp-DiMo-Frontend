@@ -13,7 +13,6 @@ export class MovieComponentComponent implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit(): void {
-    console.log(this.movieDetails);
   }
 
   openMovieDetails(movieId: String) {

@@ -22,7 +22,6 @@ export class MovieSectionComponent implements OnInit {
     await this.httpService
       .Get<[Imovie]>(`/api/movies/?genres.name=${sectionTitle}&pageSize=5`)
       .subscribe(data => {
-        console.log(data);
         this.sectionDetails = data;
       });
   }
