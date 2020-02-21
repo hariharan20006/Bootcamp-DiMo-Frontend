@@ -1,4 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+/* $fa-font-path: "../node_modules/font-awesome/fonts"; */
+
+/* @import "../node_modules/font-awesome/css/font-awesome.css"; */
+
+
 body {
   font-family: 'Montserrat', sans-serif;
   margin: 0;
@@ -16,7 +21,7 @@ body {
   background-repeat: no-repeat;
 }
 
-.loader{
+.loader {
   margin: 0 0 2em;
   height: 100px;
   width: 20%;
@@ -28,6 +33,6 @@ body {
 }
 
 svg path,
-svg rect{
-  fill: #FF6700;
+svg rect {
+  fill: #ff6700;
 }

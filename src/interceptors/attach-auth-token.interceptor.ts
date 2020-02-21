@@ -6,6 +6,7 @@ import {
   HttpInterceptor
 } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { browserStorage} from '../app/services/browserStorage.service';
 
 @Injectable()
 export class AttachAuthTokenInterceptor implements HttpInterceptor {
@@ -15,15 +16,14 @@ export class AttachAuthTokenInterceptor implements HttpInterceptor {
     request: HttpRequest<unknown>,
     next: HttpHandler
   ): Observable<HttpEvent<unknown>> {
-    const storageUser = localStorage.getItem('LoggedUser');
-    const loggedUser = storageUser ? JSON.parse(storageUser) : null;
+    const storageUser:  string = browserStorage.get('token');
     // request = request.clone({
     //   headers: request.headers.set('Access-Control-Allow-Origin', '*')
     // });
 
-    if (loggedUser) {
+    if (storageUser) {
       request = request.clone({
-        headers: request.headers.set('Authorization', loggedUser.authToken)
+        headers: request.headers.set('Authorization', storageUser)
       });
     }
 
