@@ -23,11 +23,9 @@ export class SignupComponent implements OnInit {
     private router: Router) { 
     this.signupForm = new FormGroup({
       firstName: new FormControl('', [
-        Validators.minLength(3), Validators.required
-      ]),
+        Validators.minLength(3), Validators.required, Validators.maxLength(15), Validators.pattern(/^[a-zA-Z]{3,15}$/)]),
       lastName: new FormControl('', [
-        Validators.minLength(3), Validators.required
-      ]),
+        Validators.minLength(3), Validators.required, Validators.maxLength(15)]),
       email: new FormControl('', [
         Validators.pattern(/^[_A-Za-z0-9-\\\\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$/)
       ]),

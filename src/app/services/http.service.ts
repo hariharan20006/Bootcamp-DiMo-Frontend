@@ -38,7 +38,7 @@ export class HttpService {
       errorMessage.message = error.error.message ? error.error.message :   "Something Went Wrong";
     } else {
       // Server-side errors
-      if(error.error.error.code === 403) {
+      if(error.error.error.code === 401) {
         this.browserStorage.remove('token');
         this.router.navigate(['login']);
       }
