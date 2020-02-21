@@ -11,7 +11,7 @@ import { HttpParams } from '@angular/common/http';
 export class DashboardComponent implements OnInit {
   moviesInfo: Imovie[];
   sections = ['Action', 'Adventure', 'Science Fiction', 'Fantasy', 'Romance'];
-  constructor(private httpService: HttpService) {}
+  constructor() {}
 
   ngOnInit(): void {}
 }
