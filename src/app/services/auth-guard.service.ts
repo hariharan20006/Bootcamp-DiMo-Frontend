@@ -17,14 +17,18 @@ export class AuthGuardService implements CanActivate {
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     let url = state.url;
     let isValidUser = this.authService.ValidateUser();
+    console.log('url', url, url === '/', isValidUser);
     let dashboardUrls = ['/login', '/signup', '/'];
-    let validUrls = ['/login', '/signup', '/', '/dashboard', '/profile'];
     let loginUrls = ['/login', '/signup'];
-    if (isValidUser && (dashboardUrls.includes(url)|| !validUrls.includes(url))) {
+    let movieDetailsUrl = ['/movie'];
+    if (isValidUser && dashboardUrls.includes(url)) {
       this.router.navigate(['dashboard']);
     }
     if (!isValidUser && !loginUrls.includes(url)) {
       this.router.navigate(['/login']);
+    }
+    if (isValidUser && movieDetailsUrl.includes(url)) {
+      this.router.navigate([url]);
     }
     return true;
   }
