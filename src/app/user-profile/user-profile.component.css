@@ -1,4 +1,9 @@
+.profile{
+  width: 100vw;
+}
+
 .userPrfile {
+  display: flex;
   width: 60%;
   height: 80%;
   /* background-color: azure; */
@@ -50,6 +55,7 @@
 }
 
 .item-tab {
+  flex-wrap: wrap;
   display: inline-block;
   text-align: center;
   width: 7rem;
@@ -63,4 +69,48 @@
   -moz-border-radius: .6rem;
   -ms-border-radius: .6rem;
   -o-border-radius: .6rem;
+}
+
+.font-si {
+  font-size: 5rem;
+}
+
+@media (max-width: 550px) {
+  .userPrfile {
+    display: block;
+    width: 80%;
+    height: 100vh;
+    margin: 7rem auto 10px auto;
+  }
+  .profile {
+    width: 100%
+  }
+  .userImage {
+    width: 60%;
+    min-width: 300px;
+    /* background-color: cadetblue; */
+  }
+
+  .userDetails {
+    width: 100%;
+    -webkit-box-align: start;
+    align-items: flex-start;
+    padding: 10px 0 0 4px;
+    line-height: 1;
+    /* background-color: blue; */
+  }
+
+  .flex-dir {
+    flex-wrap: wrap;
+  }
+
+  .font-si {
+    font-size: 3rem;
+  }
+
+  /* width: 100%;
+    -webkit-box-align: start;
+    align-items: flex-start;
+    padding: 10px 0 0 4px;
+    line-height: 1; */
 }

@@ -15,10 +15,15 @@
 
 @media only screen and (max-width: 600px) {
     .search-input {
-        width: 61%;
+        display: none;
     }
 
     .user-name {
         display: none;
     }
+    .nav-width{
+        width: 100vw;
+    }
+
+    
 }
