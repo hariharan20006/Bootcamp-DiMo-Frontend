@@ -35,7 +35,7 @@ export class NavigationComponent implements OnInit {
       Authorization: token.replace(/['"]+/g, '')
     });
     await this.httpService
-      .Get<any>(`/api/profile/details`, params, header)
+      .Get<any>(`/api/profile/details`, params)
       .subscribe(data => {
         this.userDetails = data;
       });
