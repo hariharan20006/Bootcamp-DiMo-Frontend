@@ -4,33 +4,32 @@ import { HttpService } from './http.service';
 import { userDetails, postSuccessResponse } from '../interfaces';
 import { CREATE_USER_URL } from '../app_constants';
 import { LoginResponse } from '../login/login.component';
-import BrowserStorage, {  browserStorage } from './browserStorage.service';
+import BrowserStorage, { browserStorage } from './browserStorage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private isUserValid : boolean
+  private isUserValid: boolean;
   public validUser: ReplaySubject<boolean> = new ReplaySubject<boolean>(1);
   private browserStorage: BrowserStorage;
   constructor(private httpService: HttpService) {
     this.browserStorage = browserStorage;
     this.getValidUser();
-   }
+  }
 
   public getValidUser() {
-   let val = this.browserStorage.get('token');
-   if (val) {
-     this.setIsUSerValid(true);
-   } else {
-     this.setIsUSerValid(false);
-   }
+    let val = this.browserStorage.get('token');
+    if (val) {
+      this.setIsUSerValid(true);
+    } else {
+      this.setIsUSerValid(false);
+    }
   }
 
   public logout() {
     browserStorage.remove('token');
     this.setIsUSerValid(false);
-
   }
 
   private setIsUSerValid(value: boolean) {
@@ -43,29 +42,40 @@ export class AuthService {
   }
 
   public createAccount(payload: userDetails): Observable<any> {
-    let result = this.httpService.Post<postSuccessResponse, userDetails>(CREATE_USER_URL, payload);
+    let result = this.httpService.Post<postSuccessResponse, userDetails>(
+      CREATE_USER_URL,
+      payload
+    );
     this.afterEffectsLoginCrear(result);
     return result;
   }
 
-  public login(payload: any):Observable<any> {
-    let result = this.httpService.Post<LoginResponse, any> ('/api/profile/login', payload);
+  public login(payload: any): Observable<any> {
+    let result = this.httpService.Post<LoginResponse, any>(
+      '/api/profile/login',
+      payload
+    );
     this.afterEffectsLoginCrear(result);
     return result;
   }
 
   public afterEffectsLoginCrear(response: Observable<any>) {
-    response.subscribe(resp => {
-      console.log('resp', resp);
-      this.browserStorage.save('token', resp.token).then(token => {
-        this.setIsUSerValid(true);
-      }, error => {
+    response.subscribe(
+      resp => {
+        console.log('resp', resp);
+        this.browserStorage.save('token', resp.token).then(
+          token => {
+            this.setIsUSerValid(true);
+          },
+          error => {
+            this.setIsUSerValid(false);
+          }
+        );
+      },
+      error => {
+        this.browserStorage.remove('token');
         this.setIsUSerValid(false);
-      });
-      
-    }, error => {
-      this.browserStorage.remove('token');
-      this.setIsUSerValid(false);
-    });
+      }
+    );
   }
 }
