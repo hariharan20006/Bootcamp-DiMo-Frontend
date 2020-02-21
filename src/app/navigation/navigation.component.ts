@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { AuthService } from '../services/auth.service';
 import { HttpParams, HttpHeaders } from '@angular/common/http';
 import { HttpService } from '../services/http.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-navigation',
@@ -14,11 +15,15 @@ import { HttpService } from '../services/http.service';
 export class NavigationComponent implements OnInit {
   public menuOpen: Boolean = false;
   public userDetails;
+  private isDataAvailabe: Subscription;
   constructor(
     private router: Router,
-    private authService: AuthService,
-    private httpService: HttpService
-  ) {}
+    private authService: AuthService
+  ) {
+    this.userDetails = {
+      firstName: ''
+    }
+  }
 
   ngOnInit(): void {
     this.getUserDetails();
@@ -28,17 +33,12 @@ export class NavigationComponent implements OnInit {
     this.menuOpen = !this.menuOpen;
   }
 
-  async getUserDetails() {
-    let token = browserStorage.storage.token;
-    let params = new HttpParams();
-    let header = new HttpHeaders({
-      Authorization: token.replace(/['"]+/g, '')
+  getUserDetails() {
+    this.isDataAvailabe = this.authService.userDataAvailable.subscribe(data => {
+      if(data) {
+        this.userDetails = this.authService.userData();
+      }
     });
-    await this.httpService
-      .Get<any>(`/api/profile/details`, params)
-      .subscribe(data => {
-        this.userDetails = data;
-      });
   }
 
   logout() {

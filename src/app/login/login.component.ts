@@ -42,14 +42,12 @@ export class LoginComponent implements OnInit {
     }
     this.authService.login(payload)
     .subscribe(token => {
+      this.error = false
       this.router.navigate(['dashboard']);
         },
         err => {
           this.error = true;
           this.message = 'Invalid Credentials';
-          setTimeout(() => {
-            this.error = undefined;
-          }, 3000);
           // TODO: Show Erro Message to user
           console.error('Observer got an error: ' + err);
         },

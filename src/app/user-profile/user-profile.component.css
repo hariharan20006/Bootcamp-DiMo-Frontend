@@ -41,6 +41,14 @@
   /* background-color: blue; */
 }
 
+.text-color-cb {
+  color: cadetblue;
+}
+
+.text-color-aq {
+  color: aqua;
+}
+
 .item-tab {
   display: inline-block;
   text-align: center;

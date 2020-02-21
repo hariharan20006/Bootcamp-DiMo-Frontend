@@ -43,12 +43,5 @@ export class UserProfileComponent implements OnInit {
     console.log('data', this.userDetails);
   }
 
-  cosolelog(val) {
-    console.log('ooooo', val);
-  }
-
-  editPassword() {
-    console.log('edit pass')
-  }
 
 }
