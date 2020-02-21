@@ -69,8 +69,6 @@ export class AuthService {
 
   public getUserDetails() {
     this.httpService.Get<userDetailsResp>('/api/profile/details').subscribe(user => {
-      console.log('userr', user);
-
       this.userDetails = user;
       this.userDataAvailable.next(true);
     })

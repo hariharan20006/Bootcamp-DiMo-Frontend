@@ -52,7 +52,6 @@ export class LoginComponent implements OnInit {
           console.error('Observer got an error: ' + err);
         },
         () => {
-          console.log('Observer got a complete notification');
         }
       );
   }

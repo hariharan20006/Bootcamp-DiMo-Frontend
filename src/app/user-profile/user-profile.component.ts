@@ -27,7 +27,6 @@ export class UserProfileComponent implements OnInit {
       if(data) {
         
         this.userDetails = this.authService.userData();
-        console.log('deerrt', this.userDetails);
       } else {
         this.userDetails = {
           firstName: '',
@@ -40,7 +39,6 @@ export class UserProfileComponent implements OnInit {
         };
       }
     })
-    console.log('data', this.userDetails);
   }
 
 

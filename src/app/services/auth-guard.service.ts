@@ -17,7 +17,6 @@ export class AuthGuardService implements CanActivate {
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     let url = state.url;
     let isValidUser = this.authService.ValidateUser();
-    console.log('url', url, url === '/', isValidUser);
     let dashboardUrls = ['/login', '/signup', '/'];
     let loginUrls = ['/login', '/signup'];
     let movieDetailsUrl = ['/movie'];
